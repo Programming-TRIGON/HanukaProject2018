@@ -1,26 +1,60 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team5990.robot;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
-public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
+import edu.wpi.first.wpilibj.SPI.Port;
 
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+public class RobotMap {
+	
+	//Drive Train ports
+	public static int DRIVE_ENCODER_LEFT_A = 0; // Blue
+	public static int DRIVE_ENCODER_LEFT_B = 1; // Yellow
+	public static int DRIVE_ENCODER_RIGHT_A = 2;
+	public static int DRIVE_ENCODER_RIGHT_B = 3;
+	
+	public static Port DRIVE_GYRO = Port.kOnboardCS0;
+	
+	public static int DRIVE_MOTOR_LEFT_BACK = 2;
+	public static int DRIVE_MOTOR_LEFT_FRONT = 3;
+	public static int DRIVE_MOTOR_RIGHT_BACK = 0;
+	public static int DRIVE_MOTOR_RIGHT_FRONT = 1;
+	
+	
+	//Cube Collector Port
+	public static int CUBE_INTAKE_MOTOR_LEFT = 4;
+	public static int CUBE_INTAKE_MOTOR_RIGHT = 5;
+	public static int CUBE_INTAKE_SWITCH = 4; //DIO channel
+	
+	public static int COLLECTOR_SOL_B = 1;
+	public static int COLLECTOR_SOL_A = 0;
+	
+	public static int LEDS_SPIKE = 0; //Relay channel
+	//Lift Ports+
+	
+	public static int LIFT_SWITCH_BOTTOM = 6;
+	public static int LIFT_SWITCH_TOP = 9;
+	public static int LIFT_MOTOR = 1;	//CAN ID
+	public static int LIFT_MOTOR_2 = 3;	//CAN ID
+	
+	//PCM ports:
+	public static int LIFT_SOLENOID_F = 6;
+	public static int LIFT_SOLENOID_R = 7;
+	
+	//Climber ports:
+	
+	//PWM:
+	public static int CLIMB_MOTOR_1 = 6;
+	public static int CLIMB_MOTOR_2 = 7;
+	public static int CLIMB_MOTOR_ELEVATE = 8;
+	
+	//DIO:
+	public static int CLIMB_SWITCH_LOW = 8;
+	public static int CLIMB_SWITCH_HIGH = 7;
+	
+	//PCM
+	public static int PCM = 0;	//CAN bus ID
+	
+	
+	
+	
+	
 }
