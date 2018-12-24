@@ -9,13 +9,10 @@ package org.usfirst.frc.team5990.robot;
 
 import org.usfirst.frc.team5990.robot.subsystems.DoubleStraps;
 import org.usfirst.frc.team5990.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team5990.robot.subsystems.DriveTrain_sensors;
 import org.usfirst.frc.team5990.robot.subsystems.Parallelogram;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -29,7 +26,6 @@ public class Robot extends TimedRobot {
 
 	public static OI oi;
 	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final DriveTrain_sensors driveTrain_sensors = new DriveTrain_sensors();
 
 	public static final Parallelogram parallelogram = new Parallelogram();
 	public static double time;

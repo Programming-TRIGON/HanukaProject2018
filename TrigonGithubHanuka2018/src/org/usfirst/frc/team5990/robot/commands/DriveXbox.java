@@ -29,11 +29,8 @@ public class DriveXbox extends Command {
 		double y = Robot.oi.getXboxY(Hand.kLeft);
 		//double smallAngleFactor = (Math.abs(y) <= 0.50)?0.67:1;
 		
-		//child lock
-		x = Robot.oi.isChildLocked() ? constrain(x) : x;
-		y = Robot.oi.isChildLocked() ? constrain(y) : y;
 		
-		Robot.driveTrain.arcadeDrive(x, -y * (Robot.oi.isDriveBackwards()?-1:1), Math.abs(y) <= 0.50);
+		Robot.driveTrain.arcadeDrive(x, -y * 1, Math.abs(y) <= 0.50);
 		
 	}
 	

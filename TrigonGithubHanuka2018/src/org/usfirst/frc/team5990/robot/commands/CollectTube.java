@@ -10,7 +10,6 @@ public class CollectTube extends CommandGroup {
 	public CollectTube() {
 		// Add Commands here:
 		addSequential(new CollectIn(0.5));
-		addParallel(new Collector_Rumble());
 		addSequential(new CollectorFlip());
 		// addSequential(new Command2());
 		// these will run in order.
