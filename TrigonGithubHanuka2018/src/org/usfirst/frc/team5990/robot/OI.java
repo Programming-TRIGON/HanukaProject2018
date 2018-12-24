@@ -10,28 +10,42 @@ package org.usfirst.frc.team5990.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
+import org.usfirst.frc.team5990.robot.commands.SetHeightTimeout;
+
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
+import org.usfirst.frc.team5990.robot.commands.CollectorFlip;
+import org.usfirst.frc.team5990.robot.commands.CollectorOut;
+import org.usfirst.frc.team5990.robot.commands.CollectorStop;
+import org.usfirst.frc.team5990.robot.commands.CollectByJoystick;
+import org.usfirst.frc.team5990.robot.commands.CollectIn;
+import org.usfirst.frc.team5990.robot.commands.CollectTube;
+
+import com.spikes2212.genericsubsystems.drivetrains.commands.DriveArcade;
+import com.spikes2212.genericsubsystems.drivetrains.commands.DriveArcadeWithPID;
+import com.spikes2212.utils.PIDSettings;
+
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
+
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-
-	boolean driveBackwards;
-	boolean childLocked = false;
 	XboxController driveStick = new XboxController(0);
 
 	public OI() {
-		driveBackwards=false;
 	}
 	
-	//child lock:
-	public boolean isChildLocked() {
-		return childLocked;
-	}
-
-	public void setChildLocked(boolean childLocked) {
-		this.childLocked = childLocked;
-	}
 
 	public double getXboxX(Hand hand){
 		return driveStick.getX(hand);
@@ -41,11 +55,3 @@ public class OI {
 		return driveStick.getY(hand);
 	}
 
-	public boolean isDriveBackwards() {
-		return driveBackwards;
-	}
-	
-	public void toggleBackwardsDriving() {
-		driveBackwards = !driveBackwards;
-	}
-}

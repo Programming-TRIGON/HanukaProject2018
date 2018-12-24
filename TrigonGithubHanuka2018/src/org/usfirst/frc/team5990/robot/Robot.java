@@ -15,6 +15,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team5990.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5990.robot.subsystems.DriveTrain_sensors;
+import org.usfirst.frc.team5990.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5990.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5990.robot.subsystems.Parallelogram;
+
+import org.usfirst.frc.team5990.robot.commands.CollectByJoystick;
+import org.usfirst.frc.team5990.robot.subsystems.DoubleStraps;
 
 import com.spikes2212.dashboard.DashBoardController;
 import com.spikes2212.genericsubsystems.basicSubsystem.BasicSubsystem;
@@ -22,6 +28,7 @@ import com.spikes2212.genericsubsystems.drivetrains.TankDrivetrain;
 import com.spikes2212.genericsubsystems.drivetrains.commands.DriveArcade;
 import com.spikes2212.genericsubsystems.drivetrains.commands.DriveTank;
 import com.spikes2212.utils.InvertedConsumer;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,10 +46,14 @@ public class Robot extends TimedRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
-	// write code from here
+	public static final Parallelogram parallelogram = new Parallelogram();
+	public static double time;
+	public static boolean isLocked;
+	Command m_autonomousCommand;
+	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-	// static TankDrivetrain drivetrain;
-	// DashBoardController dbc;
+	public static final DoubleStraps collector = new DoubleStraps();
+
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -57,16 +68,12 @@ public class Robot extends TimedRobot {
 
 		SmartDashboard.putData("Auto mode", chooser);
 
-		// collector.setDefaultCommand(new CollectByJoystick(oi.getOperatorXbox()));
 
-		// drivetrain = new TankDrivetrain(new
-		// InvertedConsumer(SubsystemComponents.Drivetrain.LEFT_SPEED_CONTROLLER::set),
-		// SubsystemComponents.Drivetrain.RIGHT_SPEED_CONTROLLER::set); //Left speed
-		// controller is inverted
-		// drivetrain.setDefaultCommand(new DriveArcade(drivetrain, oi::getDriverXboxX,
-		// oi::getDriverXboxY));
-		// dbc = new DashBoardController();
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		SmartDashboard.putData("Auto mode", m_chooser);
+		SmartDashboard.putNumber("time", 0);
+		isLocked = false;
+		SmartDashboard.putBoolean("lock", false);
+ 
 
 	}
 
@@ -136,7 +143,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		// dbc.update();
+
+		time = SmartDashboard.getNumber("time", time);
+		if(SmartDashboard.getBoolean("lock", false))
+			parallelogram.setLock(!isLocked);
+
 	}
 
 	/**
