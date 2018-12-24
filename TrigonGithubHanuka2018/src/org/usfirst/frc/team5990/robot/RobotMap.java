@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team5990.robot;
 
+import edu.wpi.first.wpilibj.SPI.Port;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -14,20 +16,28 @@ package org.usfirst.frc.team5990.robot;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
 	public static final int PARALLELOGRAM_MOTOR1 = 6;
 	public static final int PARALLELOGRAM_MOTOR2 = 7;
-//	public static final int PARALELLOGRAM_SWITCH = 6;
-//	public static final int PARALELLOGRAM_ENCODER1 = 7;
-//	public static final int PARALELLOGRAM_ENCODER2 = 8;
-	//public static final int TICKS = 357;
+
 	public static final int PARALLELOGRAM_SOLENOID1 = 0;
 	public static final int PARALLELOGRAM_SOLENOID2 = 1;
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+
+  	// Collector ports
+	public static int COLLECTOR_ROBOT_TOP = 0;
+	public static int COLLECTOR_ROBOT_BOTTOM = 1;
+	public static int COLLECTOR_SWITCH = 0;
+	public static int COLLECTOR_ENCODER_CHANNEL_A = 1;
+	public static int COLLECTOR_ENCODER_CHANNEL_B = 2;
+
+	// Collector flip
+	public static double TIMEOUT_FLIP = 0.4;
+	public static double POWER_TOP_FLIP = -0.3;
+	public static double POWER_BOTTOM_FLIP = -0.4;
+
+	// collector output
+	public static double TIMEOUT_OUTPUT = 0.5;
+	
+	// Rumble
+	public static double TIMEOUT_RUMBLE = 1;
+	public static double RUMBLE_VALUE = 1;
 }

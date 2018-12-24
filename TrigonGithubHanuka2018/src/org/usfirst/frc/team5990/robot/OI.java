@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team5990.robot;
 
+
 import org.usfirst.frc.team5990.robot.commands.SetHeightTimeout;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -14,43 +15,29 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team5990.robot.commands.CollectorFlip;
+import org.usfirst.frc.team5990.robot.commands.CollectorOut;
+import org.usfirst.frc.team5990.robot.commands.CollectorStop;
+import org.usfirst.frc.team5990.robot.commands.CollectByJoystick;
+import org.usfirst.frc.team5990.robot.commands.CollectIn;
+import org.usfirst.frc.team5990.robot.commands.CollectTube;
+
+import com.spikes2212.genericsubsystems.drivetrains.commands.DriveArcade;
+import com.spikes2212.genericsubsystems.drivetrains.commands.DriveArcadeWithPID;
+import com.spikes2212.utils.PIDSettings;
+
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
+
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	//// CREATING BUTTONS
-	// One type of button is a joystick button which is any button on a
-	//// joystick.
-	// You create one by telling it which joystick it's on and which button
-	// number it is.
-	// defining button for different variables
-	Joystick operatorJoystick = new Joystick(0);
-	Button rightBumper = new JoystickButton(operatorJoystick, 4);
-	Button leftBumper = new JoystickButton(operatorJoystick, 3);
-//	Button button = new JoystickButton(operatorJoystick, 3);
-	
-	// There are a few additional built in buttons you can use. Additionally,
-	// by subclassing Button you can create custom triggers and bind those to
-	// commands the same as any other Button.
-
-	//// TRIGGERING COMMANDS WITH BUTTONS
-	// Once you have a button, it's trivial to bind it to a button in one of
-	// three ways:
-
-	// Start the command when the button is pressed and let it run the command
-	// until it is finished as determined by it's isFinished method.
-
-	public OI() {
-		// when the buttons chosen are pressed these commands are on
-		rightBumper.whenPressed(new SetHeightTimeout(0.2));
-		leftBumper.whenPressed(new SetHeightTimeout(-0.2));
-		// button.whenPressed(new UpDown1Sec());
-		// Run the command while the button is being held down and interrupt it once
-		// the button is released.
-		
-	}
-	// Start the command when the button is released and let it run the command
-	// until it is finished as determined by it's isFinished method.
 
 }
