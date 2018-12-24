@@ -16,21 +16,13 @@ import edu.wpi.first.wpilibj.SPI.Port;
  * floating around.
  */
 public class RobotMap {
-	// public interface PORTS {
-	// Drive Train ports
-	/*
-	 * public static int DRIVE_ENCODER_LEFT_A = 0; // Blue public static int
-	 * DRIVE_ENCODER_LEFT_B = 1; // Yellow public static int DRIVE_ENCODER_RIGHT_A =
-	 * 2; public static int DRIVE_ENCODER_RIGHT_B = 3;
-	 * 
-	 * public static Port DRIVE_GYRO = Port.kOnboardCS0;
-	 * 
-	 * public static int DRIVE_MOTOR_LEFT_BACK = 2; public static int
-	 * DRIVE_MOTOR_LEFT_FRONT = 3; public static int DRIVE_MOTOR_RIGHT_BACK = 0;
-	 * public static int DRIVE_MOTOR_RIGHT_FRONT = 1;
-	 */
+	public static final int PARALLELOGRAM_MOTOR1 = 6;
+	public static final int PARALLELOGRAM_MOTOR2 = 7;
 
-	// Collector ports
+	public static final int PARALLELOGRAM_SOLENOID1 = 0;
+	public static final int PARALLELOGRAM_SOLENOID2 = 1;
+
+  	// Collector ports
 	public static int COLLECTOR_ROBOT_TOP = 0;
 	public static int COLLECTOR_ROBOT_BOTTOM = 1;
 	public static int COLLECTOR_SWITCH = 0;
@@ -48,5 +40,4 @@ public class RobotMap {
 	// Rumble
 	public static double TIMEOUT_RUMBLE = 1;
 	public static double RUMBLE_VALUE = 1;
-	// }
 }

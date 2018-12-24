@@ -13,6 +13,10 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team5990.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5990.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5990.robot.subsystems.Parallelogram;
+
 import org.usfirst.frc.team5990.robot.commands.CollectByJoystick;
 import org.usfirst.frc.team5990.robot.subsystems.DoubleStraps;
 
@@ -23,6 +27,7 @@ import com.spikes2212.genericsubsystems.drivetrains.commands.DriveArcade;
 import com.spikes2212.genericsubsystems.drivetrains.commands.DriveTank;
 import com.spikes2212.utils.InvertedConsumer;
 
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -31,18 +36,16 @@ import com.spikes2212.utils.InvertedConsumer;
  * project.
  */
 public class Robot extends TimedRobot {
+	public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+	public static OI oi;
+	public static final Parallelogram parallelogram = new Parallelogram();
+	public static double time;
+	public static boolean isLocked;
+	Command m_autonomousCommand;
+	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	public static final DoubleStraps collector = new DoubleStraps();
 
-	public static OI oi;
-
-	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
-
-	// write code from here
-
-	// static TankDrivetrain drivetrain;
-	// DashBoardController dbc;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -67,6 +70,10 @@ public class Robot extends TimedRobot {
 		// oi::getDriverXboxY));
 		// dbc = new DashBoardController();
 		// chooser.addObject("My Auto", new MyAutoCommand());
+		SmartDashboard.putData("Auto mode", m_chooser);
+		SmartDashboard.putNumber("time", 0);
+		isLocked = false;
+		SmartDashboard.putBoolean("lock", false);
 
 	}
 
@@ -136,7 +143,10 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		// dbc.update();
+		time = SmartDashboard.getNumber("time", time);
+		if(SmartDashboard.getBoolean("lock", false))
+			parallelogram.setLock(!isLocked);
+
 	}
 
 	/**
