@@ -1,12 +1,8 @@
 package org.usfirst.frc.team5990.robot.subsystems;
 
-import org.usfirst.frc.team5990.robot.Robot;
 import org.usfirst.frc.team5990.robot.RobotMap;
-import org.usfirst.frc.team5990.robot.commands.CollectByJoystick;
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
