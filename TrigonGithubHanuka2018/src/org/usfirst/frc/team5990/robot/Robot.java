@@ -11,6 +11,7 @@ import org.usfirst.frc.team5990.robot.subsystems.DoubleStraps;
 import org.usfirst.frc.team5990.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team5990.robot.subsystems.Parallelogram;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -30,8 +31,9 @@ public class Robot extends TimedRobot {
 	public static final Parallelogram parallelogram = new Parallelogram();
 	public static double time;
 	public static boolean isLocked;
-
+	public static final Compressor compressor = new Compressor();
 	public static final DoubleStraps collector = new DoubleStraps();
+	public static final DriveTrain drivetrain = new DriveTrain();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -39,9 +41,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-
+		
 		oi = new OI();
-
+		compressor.start();
 		
 		SmartDashboard.putNumber("time", 0);
 		isLocked = false;

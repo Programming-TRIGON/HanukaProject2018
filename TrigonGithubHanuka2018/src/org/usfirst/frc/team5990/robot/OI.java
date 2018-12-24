@@ -7,6 +7,12 @@
 
 package org.usfirst.frc.team5990.robot;
 
+import org.usfirst.frc.team5990.robot.commands.CollectTube;
+import org.usfirst.frc.team5990.robot.commands.CollectorFlip;
+import org.usfirst.frc.team5990.robot.commands.CollectorOut;
+import org.usfirst.frc.team5990.robot.commands.CollectorStop;
+import org.usfirst.frc.team5990.robot.commands.SetHeightTimeout;
+
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -25,6 +31,17 @@ public class OI {
 		XButton = new JoystickButton(operatorXbox, 3);
 		YButton = new JoystickButton(operatorXbox, 4);
 		BButton = new JoystickButton(operatorXbox, 2);
+		
+		Button rightBumper = new JoystickButton(operatorXbox, 5);
+		Button leftBumper = new JoystickButton(operatorXbox, 6);
+		
+		rightBumper.whenPressed(new SetHeightTimeout(0.2));
+		leftBumper.whenPressed(new SetHeightTimeout(-0.2));
+		
+		AButton.whenPressed(new CollectTube());
+		XButton.whenPressed(new CollectorFlip());
+		YButton.whenPressed(new CollectorOut(-0.5));
+		BButton.whenPressed(new CollectorStop());
 	}
 
 	public double getXboxX(Hand hand) {
