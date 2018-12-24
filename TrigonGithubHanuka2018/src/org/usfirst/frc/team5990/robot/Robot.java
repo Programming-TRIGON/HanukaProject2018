@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team5990.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team5990.robot.subsystems.DriveTrain_sensors;
 import org.usfirst.frc.team5990.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5990.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team5990.robot.subsystems.Parallelogram;
@@ -36,8 +38,14 @@ import com.spikes2212.utils.InvertedConsumer;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+
 	public static OI oi;
+	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final DriveTrain_sensors driveTrain_sensors = new DriveTrain_sensors();
+	
+	Command autonomousCommand;
+	SendableChooser<Command> chooser = new SendableChooser<>();
+
 	public static final Parallelogram parallelogram = new Parallelogram();
 	public static double time;
 	public static boolean isLocked;
@@ -60,20 +68,12 @@ public class Robot extends TimedRobot {
 
 		SmartDashboard.putData("Auto mode", chooser);
 
-		// collector.setDefaultCommand(new CollectByJoystick(oi.getOperatorXbox()));
 
-		// drivetrain = new TankDrivetrain(new
-		// InvertedConsumer(SubsystemComponents.Drivetrain.LEFT_SPEED_CONTROLLER::set),
-		// SubsystemComponents.Drivetrain.RIGHT_SPEED_CONTROLLER::set); //Left speed
-		// controller is inverted
-		// drivetrain.setDefaultCommand(new DriveArcade(drivetrain, oi::getDriverXboxX,
-		// oi::getDriverXboxY));
-		// dbc = new DashBoardController();
-		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putNumber("time", 0);
 		isLocked = false;
 		SmartDashboard.putBoolean("lock", false);
+ 
 
 	}
 
@@ -143,6 +143,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+
 		time = SmartDashboard.getNumber("time", time);
 		if(SmartDashboard.getBoolean("lock", false))
 			parallelogram.setLock(!isLocked);

@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team5990.robot;
 
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 import org.usfirst.frc.team5990.robot.commands.SetHeightTimeout;
 
@@ -39,5 +41,17 @@ import edu.wpi.first.wpilibj.Joystick;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	XboxController driveStick = new XboxController(0);
 
-}
+	public OI() {
+	}
+	
+
+	public double getXboxX(Hand hand){
+		return driveStick.getX(hand);
+	}
+	
+	public double getXboxY(Hand hand){
+		return driveStick.getY(hand);
+	}
+
