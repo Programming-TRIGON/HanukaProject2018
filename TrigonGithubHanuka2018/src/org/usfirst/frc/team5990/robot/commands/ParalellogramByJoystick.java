@@ -2,46 +2,43 @@ package org.usfirst.frc.team5990.robot.commands;
 
 import org.usfirst.frc.team5990.robot.Robot;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class SetHeightTimeout extends Command {
-	// making variables
-	double power;
+public class ParalellogramByJoystick extends Command {
 
-	public SetHeightTimeout(double power,double time) {
-		// needs paralellogram ss, defines timeout time 
+	public ParalellogramByJoystick() {
 		requires(Robot.parallelogram);
-		setTimeout(time);
-		this.power = power;
-
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		// getting unlocked
-		Robot.parallelogram.setLock(false);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		// the parallelogram goes up
-		Robot.parallelogram.setSpeed(power);
-
+		double y = Robot.oi.getXboxY(Hand.kRight);
+		if (y < 0.2 && y > -0.2) {
+			Robot.parallelogram.stop();
+			Robot.parallelogram.setLock(true);
+		} else {
+			Robot.parallelogram.setLock(false);
+			Robot.parallelogram.setSpeed(0.6*y);
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return isTimedOut();
+		return false;
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
-		//program stops after parallelogram is unlocked
-		Robot.parallelogram.stop();
-		Robot.parallelogram.setLock(true);
 	}
 
 	// Called when another command which requires one or more of the same

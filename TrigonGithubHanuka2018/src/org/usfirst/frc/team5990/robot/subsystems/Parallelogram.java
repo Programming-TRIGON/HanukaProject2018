@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5990.robot.subsystems;
 import org.usfirst.frc.team5990.robot.RobotMap;
+import org.usfirst.frc.team5990.robot.commands.ParalellogramByJoystick;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -26,7 +28,7 @@ public class Parallelogram extends Subsystem {
 		//lowerSwitch = new DigitalInput(RobotMap.PARALELLOGRAM_SWITCH);
 		solenoid = new DoubleSolenoid(RobotMap.PARALLELOGRAM_SOLENOID1, RobotMap.PARALLELOGRAM_SOLENOID2);
 		//encoder = new Encoder(RobotMap.PARALELLOGRAM_ENCODER1,RobotMap.PARALELLOGRAM_ENCODER2);
-		
+		controller1.setInverted(true);
 	}
 	public void setLock(boolean b) {
 		if (b)
@@ -63,6 +65,6 @@ public class Parallelogram extends Subsystem {
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new ParalellogramByJoystick());
 	}
 }

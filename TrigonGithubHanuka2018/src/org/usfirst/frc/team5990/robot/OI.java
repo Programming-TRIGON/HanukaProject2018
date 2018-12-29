@@ -35,12 +35,11 @@ public class OI {
 		Button rightBumper = new JoystickButton(operatorXbox, 5);
 		Button leftBumper = new JoystickButton(operatorXbox, 6);
 		
-		rightBumper.whenPressed(new SetHeightTimeout(0.2));
-		leftBumper.whenPressed(new SetHeightTimeout(-0.2));
+		rightBumper.whenPressed(new SetHeightTimeout(0.4,5.5));
+		leftBumper.whenPressed(new SetHeightTimeout(-0.4,3));
 		
 		AButton.whenPressed(new CollectTube());
-		XButton.whenPressed(new CollectorFlip());
-		YButton.whenPressed(new CollectorOut(-0.5));
+		YButton.whenPressed(new CollectorOut(-0.6));
 		BButton.whenPressed(new CollectorStop());
 	}
 

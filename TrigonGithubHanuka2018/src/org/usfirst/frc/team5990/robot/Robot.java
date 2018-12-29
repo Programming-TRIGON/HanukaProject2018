@@ -31,9 +31,8 @@ public class Robot extends TimedRobot {
 	public static final Parallelogram parallelogram = new Parallelogram();
 	public static double time;
 	public static boolean isLocked;
-	public static final Compressor compressor = new Compressor();
+	public Compressor compressor = new Compressor(0);
 	public static final DoubleStraps collector = new DoubleStraps();
-	public static final DriveTrain drivetrain = new DriveTrain();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -51,6 +50,12 @@ public class Robot extends TimedRobot {
 
 	}
 
+	@Override
+	public void robotPeriodic() {
+		// TODO Auto-generated method stub
+		super.robotPeriodic();
+		SmartDashboard.putBoolean("Valve", compressor.getPressureSwitchValue());
+	}
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
@@ -104,8 +109,9 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 
 		time = SmartDashboard.getNumber("time", time);
-		if (SmartDashboard.getBoolean("lock", false))
+		if (SmartDashboard.getBoolean("lock", false)) {
 			parallelogram.setLock(!isLocked);
+		}
 
 	}
 
